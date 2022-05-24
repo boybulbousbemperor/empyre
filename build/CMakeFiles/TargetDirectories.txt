@@ -1,0 +1,9 @@
+F:/Users/Amstel/sources/repos/Empyre/build/CMakeFiles/NightlyMemoryCheck.dir
+F:/Users/Amstel/sources/repos/Empyre/build/CMakeFiles/Experimental.dir
+F:/Users/Amstel/sources/repos/Empyre/build/CMakeFiles/Continuous.dir
+F:/Users/Amstel/sources/repos/Empyre/build/CMakeFiles/Nightly.dir
+F:/Users/Amstel/sources/repos/Empyre/build/CMakeFiles/Empyre.dir
+F:/Users/Amstel/sources/repos/Empyre/build/CMakeFiles/PACKAGE.dir
+F:/Users/Amstel/sources/repos/Empyre/build/CMakeFiles/RUN_TESTS.dir
+F:/Users/Amstel/sources/repos/Empyre/build/CMakeFiles/ALL_BUILD.dir
+F:/Users/Amstel/sources/repos/Empyre/build/CMakeFiles/ZERO_CHECK.dir
