@@ -1,3 +1,5 @@
+#include "../../include/crow_all.h"
+
 #ifndef APP_CONTROLLER_H
 #define APP_CONTROLLER_H
 
@@ -11,6 +13,7 @@ public:
 
 private:
   EmpyreController controller;
+  crow::SimpleApp app;
 };
 
 #endif
