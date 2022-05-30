@@ -1,4 +1,5 @@
-#include "../../include/crow_all.h"
+#include "../../lib/nginx/src/core/nginx.h"
+#include "../../lib/jsoncpp/include/json/json.h"
 
 #ifndef APP_CONTROLLER_H
 #define APP_CONTROLLER_H
@@ -11,9 +12,13 @@ public:
   AppController(EmpyreHandler handler): controller(handler) {}
   ~AppController();
 
+  void gatewayResponse();
+
 private:
   EmpyreController controller;
-  crow::SimpleApp app;
+  std::string controllerName;
+  std::string actionName;
+  int actionID;
 };
 
 #endif

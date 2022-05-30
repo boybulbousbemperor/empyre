@@ -1,24 +1,26 @@
 #include "AppController.h"
+#include "../../lib/nginx/src/http/ngx_http_request.h"
+// code ...
 
-AppController::AppController() {
-  CROW_ROUTE(this->app, "/controller/action/<int>")([](const crow::request &reqs, int actionID) {
-    auto body = crow::json::load(reqs.body);
-    auto resp = crow::response();
-    if (!body) return crow::response(400);
+AppController::AppController() = default;
 
-    std::ifstream inf;
-    std::string contents;
+AppController::~AppController() { controller.~EmpyreController(); }
 
-    while (std::getline(inf, contents)){
-      std::ostringstream stringstream_;
-      stringstream_ << contents;
-      resp = crow::response(stringstream_.str());
-    }
+void AppController::gatewayResponse() {
+  Json::Value rootValue;
+  auto ctrl = rootValue.get("http.controller", controllerName);
+  auto act = rootValue.get("http.action", actionName);
+  auto id = rootValue.get("http.id", actionID);
 
-    return resp;
-  });
-}
+  ngx_http_headers_out_t *reqs;
+  reqs->status = NGX_HTTP_OK;
+  reqs->content_length_n = 255;
+  reqs->content_type.len = sizeof(id) - 1;
+  reqs->content_type.data = id;
+  ngx_http_send_header(&reqs->headers);
 
-AppController::~AppController() {
-  controller.~EmpyreController();
+  reqs->content_encoding = ngx_list_push(&reqs->headers);
+  if (reqs->content_encoding == NULL) {
+    ngx_http_send_header(&reqs->status = NGX_HTTP_NO_CONTENT);
+  }
 }
